@@ -7,23 +7,23 @@
  */
 void stack_push(stack_t **stack, int value)
 {
-	stack_t *endadd = NULL;
+	stack_t *end = NULL;
 	stack_t *node = NULL;
 
 	if (stack == NULL)
 		return;
-	endadd = (stack_t *)malloc(sizeof(stack_t));
-	if (endadd == NULL)
+	end = (stack_t *)malloc(sizeof(stack_t));
+	if (end == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	endadd->n = value;
-	endadd->next = NULL;
+	end->n = value;
+	end->next = NULL;
 	if (*stack == NULL)
 	{
-		*stack = endadd;
-		endadd->prev = NULL;
+		*stack = end;
+		end->prev = NULL;
 	}
 	else
 	{
@@ -32,7 +32,7 @@ void stack_push(stack_t **stack, int value)
 		{
 			node = node->next;
 		}
-		node->next = endadd;
-		endadd->prev = node;
+		node->next = end;
+		end->prev = node;
 	}
 }
